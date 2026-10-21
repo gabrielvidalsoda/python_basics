@@ -1,7 +1,7 @@
 import logging
 logger = logging.getLogger(__name__)
 
-# This is a sum of scores from a student. If the student scores more than 10, they pass. 
+# This is a sum of scores from a student. If the student scores more than 10, they pass.
 # If they score between 7 and 9 they receive another chance.
 # If they score below 7 they fail.
 
@@ -10,55 +10,54 @@ logger = logging.getLogger(__name__)
 def check_errors(numbers):
     for number in numbers:
         if not number.isdigit():
-            print("Burro do caralho, coloca um número")
-            exit() 
+            print("Insira apenas números inteiros.")
+            exit()
+
 
 def pass_or_fail (score):
     if score >= 10:
-        return "Congratulations, you passed! 🚀"
+        return "Congratulations, you passed!"
     if score < 7:
-        return "You suck 🤡"
+        return "You did not pass."
     else:
         return "You'll get another chance"
 
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-)
 
-# Execution
+def main():
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format="%(asctime)s - %(levelname)s - %(message)s",
+    )
 
-input_receiver = input("Enter a sequence of numbers, separated by commas: ")
+    # Execution
 
-numbers = input_receiver.split(",")
+    input_receiver = input("Enter a sequence of numbers, separated by commas: ")
 
-check_errors(numbers)
+    numbers = input_receiver.split(",")
 
-numbers = [int(number) for number in numbers]
+    check_errors(numbers)
 
-# total = sum(numbers)
+    numbers = [int(number) for number in numbers]
 
-for number in numbers:
-    print(type(number))
+    # total = sum(numbers)
 
-sum_numbers = 0
-for number in numbers:
-    sum_numbers += number
+    for number in numbers:
+        print(type(number))
 
-score = sum_numbers
+    sum_numbers = 0
+    for number in numbers:
+        sum_numbers += number
 
-logger.debug(number)
+    score = sum_numbers
 
-logger.debug(numbers)
+    logger.debug(number)
 
-logger.debug(type(numbers))
+    logger.debug(numbers)
 
-print(pass_or_fail(score))
+    logger.debug(type(numbers))
 
-
-
-
+    print(pass_or_fail(score))
 
 
-
-
+if __name__ == "__main__":
+    main()
